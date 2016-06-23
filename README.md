@@ -40,5 +40,5 @@ After, it will commit file and tag this commit with related version. Also it can
     patcher [filename [varName]] [-p]
 ```
 
-Where optional arguments: **filename** (**main.go** by default) is a file where variable **varName** (***version** by default) located.
+Where optional arguments: **filename** (**main.go** by default) is a file where variable **varName** (**version** by default) located.
 When **-p** flag provided,  **patcher** will push changes immediatly to the repository.
