@@ -12,17 +12,17 @@ import (
 )
 
 var (
-	version  = "0.0.2"
+	version  = "0.0.3"
 	filename = "main.go"
 	varName  = "version"
 )
 
 func main() {
 	args := os.Args
-	if len(args) > 1 {
+	if len(args) > 1 && args[1] != "-p" {
 		filename = args[1]
 	}
-	if len(args) > 2 {
+	if len(args) > 2 && args[2] != "-p" {
 		varName = args[2]
 	}
 	f, err := os.Open(filename)
@@ -83,11 +83,17 @@ func main() {
 		fmt.Printf("Add git tag: %v\n", err)
 		return
 	}
+	fmt.Printf("Version updated to: %s\n", newVersion)
 	push := flag.Bool("-p", false, "Type -p flag to push changes immediatly")
+	flag.Parse()
+	if !*push {
+		return
+	}
 	cmd = exec.Command("git", "push", "origin", "master", "--follow-tags")
 	err = cmd.Run()
 	if err != nil {
 		fmt.Printf("Can't push changes: %v\n", err)
 		return
 	}
+	fmt.Println("Pushed to repo")
 }
