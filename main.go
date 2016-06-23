@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	version  = "0.0.3"
+	version  = "0.0.5"
 	filename = "main.go"
 	varName  = "version"
 )
