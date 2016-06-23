@@ -61,5 +61,10 @@ func main() {
 		fmt.Printf("Can't write file: %v\n", err)
 		return
 	}
-	exec.Command("git", "tag", "-a", "v"+newVersion, "-m", "Version: "+newVersion)
+	cmd := exec.Command("git", "tag", "-a", "v"+newVersion, "-m", "Version: "+newVersion)
+	err = cmd.Run()
+	if err != nil {
+		fmt.Printf("Add git tag: %v\n", err)
+		return
+	}
 }
