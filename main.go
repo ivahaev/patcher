@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	version  = "0.0.6"
+	version  = "0.0.7"
 	filename = "main.go"
 	varName  = "version"
 )
@@ -84,7 +84,7 @@ func main() {
 		return
 	}
 	fmt.Printf("Version updated to: %s\n", newVersion)
-	push := flag.Bool("-p", false, "Type -p flag to push changes immediatly")
+	push := flag.Bool("p", false, "Type -p flag to push changes immediatly")
 	flag.Parse()
 	if !*push {
 		return
